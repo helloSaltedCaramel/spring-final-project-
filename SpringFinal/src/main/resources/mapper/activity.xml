@@ -10,7 +10,7 @@
 
 <mapper namespace="com.spring.model.ActtivityDAO">
 	<select id="all" resultType="com.spring.model.ActivityDTO">
-		select * from activity order by A_no desc
+		select * from activity order by a_no desc
 	</select>
 	
 </mapper>
