@@ -39,17 +39,75 @@
 								<ul class="cat-catwapper">
 									<li>
 										<button class="cat-all-common">
-											<img class="cat-icon" alt="all icon" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_category_all_md_colored.svg">
-												<div class="cat-label">전체</div>
+											<img class="cat-icon" alt="all icon" src="./resources/img/total.png">
+												<div class="cat-label">전체보기</div>
 										</button>
 									</li>
-									<li>
-										<button class="cat-act-selected">
-											<img class="cat-icon" alt="acttivity icon" src="https://d2ur7st6jjikze.cloudfront.net/offer_category_icons/3_original_1610608255.png?1610608255">
-												<div class="cat-label">액티비티</div>
-										</button>
 									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/diving.png">
+												<div class="cat-label">스노클링/다이빙</div>
+										</button>
 									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/surfing.png">
+												<div class="cat-label">서핑</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/sea_activity.png">
+												<div class="cat-label">수상액티비티</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/ship.png">
+												<div class="cat-label">크루즈/요트</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/golf.png">
+												<div class="cat-label">골프</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/indoor.png">
+												<div class="cat-label">실내액티비티</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/sky.png">
+												<div class="cat-label">익스트림액티비티</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/kart_racing.png">
+												<div class="cat-label">아웃도어</div>
+										</button>
+									</li>
+									
+									<li>
+										<button class="cat-all-common">
+											<img class="cat-icon" alt="all icon" src="./resources/img/farm2.png">
+												<div class="cat-label">이색체험</div>
+										</button>
+									</li>
+									
+								
 								</ul>
 								 <%--전체 카테고리end --%>
 						</div>
@@ -80,14 +138,14 @@
 								<div class="main-offer">
 									<div class="main-css-kaeiru">
 											<div class="main-css-imgWrapper">
-												<img class="main-css-thumbnail" alt="loading" loading="lazy" src="https://d2ur7st6jjikze.cloudfront.net/offer_photos/101144/549341_medium_1608606483.jpg?1608606483">
+												<img class="main-css-thumbnail" alt="loading" loading="lazy" src="resources/img/thum_981.jpeg">
 											</div>
 										</div>
 										<div class="main-css-15v0401">
 										<div>
-											<!-- <div class="main-css-1v0401">액티비티 제주도</div> -->
+											<div class="main-css-1v0401">액티비티 제주도</div> 
 											<div class="main-css-2v0401">${i.getA_name() }</div>
-											<div class="main-css-3v0401">${i.getA_location()}</div>
+											<div class="main-css-3v0401">${i.getA_seller()}</div>
 										</div>
 										<div>
 											<div class="main-css-4v0401">
@@ -101,11 +159,11 @@
 											<div class="main-css-10v0401">
 												<div class="main-css-11v0401">
 													<span class="main-css-11x902oe">
-														58,500원
+														<fmt:formatNumber value="${i.getA_price() }" pattern="#,###"/>원	
 													</span>
 												</div>
 												<span class="main-css-11wj8nz">
-													<input class="main-btn-11wj8nz" type="button" value="담기">
+													<input class="main-btn-11wj8nz" type="image" src="./resources/img/add2.png">
 												</span>
 											</div>
 										</div>
