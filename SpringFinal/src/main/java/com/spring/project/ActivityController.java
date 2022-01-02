@@ -57,9 +57,9 @@ public class ActivityController {
 		
 		List<ActivityDTO> list = this.dao.getActivityList();
 		
-		model.addAttribute("LIST", list);
+		model.addAttribute("List", list);
 		
-		return "product_list";
+		return "activity_list";
 		
 		
 	}

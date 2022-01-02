@@ -44,6 +44,8 @@
 
 .Act-map-content {
 	display: flex;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
@@ -86,7 +88,7 @@
 	letter-spacing: -0.15px;
 	outline: none;
 	border: none;
-	background-color: 
+	background-color: #fff;
 	
 }
 
@@ -270,7 +272,10 @@
 }/* 담기 버튼 */
 
 .main-btn-11wj8nz {
+	display:flex;
 	background-color: #fff;
+	width: 30px;
+	height: 30px;
 }/* 담기 버튼 */
 
 /* 리스트사진 밑 글 end */
