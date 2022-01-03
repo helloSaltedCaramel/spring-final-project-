@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.model.ActivityDAO;
 import com.spring.model.ActivityDTO;
@@ -62,6 +63,18 @@ public class ActivityController {
 		return "activity_list";
 		
 		
+	}
+	
+	@RequestMapping("activity_cont.do")
+	public String content(@RequestParam("no") int no, Model model) {
+		
+		ActivityDTO dto = this.dao.activityCont(no);
+		
+		model.addAttribute("Cont", dto);
+		
+		// System.out.println("image >>> " + dto.getA_img());
+		
+		return "activity_list";
 	}
 	
 	
