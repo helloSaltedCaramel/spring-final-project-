@@ -14,8 +14,7 @@ public class ActivityDAOImpl implements ActivityDAO {
 
 	@Override
 	public int getListCont() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.sqlSession.selectOne("count");
 	}
 
 	@Override
@@ -31,8 +30,8 @@ public class ActivityDAOImpl implements ActivityDAO {
 
 	@Override
 	public ActivityDTO activityCont(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.sqlSession.selectOne("content", no);
 	}
 
 	@Override

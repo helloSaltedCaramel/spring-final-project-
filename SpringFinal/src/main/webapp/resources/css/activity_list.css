@@ -173,11 +173,13 @@
 }
 .main-css-imgWrapper{
 	position: relative;
-	width: inherit;
-	height: inherit;
-	direction: inline-flex;
-	flex-direction: column;
-	overflow: hidden;
+    width: inherit;
+    height: inherit;
+    display: inline-flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    overflow: hidden;
 }
 .main-css-thumbnail{
 	direction: inline-flex;
@@ -272,11 +274,24 @@
 }/* 담기 버튼 */
 
 .main-btn-11wj8nz {
+	font-size:14px;
 	display:flex;
 	background-color: #fff;
-	width: 30px;
+	width: 40px;
 	height: 30px;
 }/* 담기 버튼 */
 
 /* 리스트사진 밑 글 end */
 /* main 중앙 end */
+
+
+/* 모달창 */
+#myModal{
+	background: rgba(0,0,0,0.5);
+	z-index: 2;
+}
+
+#btn-myModal{
+	padding: 0px;
+}
+

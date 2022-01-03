@@ -10,13 +10,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="${path}/resources/css/activity_list.css" rel="stylesheet"/> 	
+<link href="${path}/resources/css/activity_list.css" rel="stylesheet"/> 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    
+  $(button).on('load',function(){
+        $('#myModal').modal('show');
+    });
+</script>
 </head>
 <body>
+      
 
-
-
-	<div id="Main" >
+	<div id="Main" >	
 		<div class="Mainmod">
 			<div class="css-Mainmod">
 				<div class="css-Mainmod-ExperienceList">
@@ -135,10 +145,28 @@
 							<c:if test="${!empty list }">
 							 <c:forEach items="${list }" var="i">
 							 
-								<div class="main-offer">
+							 
+							 <%-- 리스트 st --%>
+							<div class="main-offer">  
+ 						    <input type="hidden" value="${dto.getA_no() }" name="a_no()">	
+
 									<div class="main-css-kaeiru">
 											<div class="main-css-imgWrapper">
-												<img class="main-css-thumbnail" alt="loading" loading="lazy" src="resources/img/thum_981.jpeg">
+											   <c:set var="dto" value="${Cont }" />
+											   
+											    
+											 <%-- <button type="button" id="btn-myModal" class="btn btn-sm" onclick="location.href='activity_cont.do?no=${i.getA_no() }'" data-toggle="modal" data-target="#myModal" >  --%>
+						 					 <button type="button" id="btn-myModal" class="btn btn-sm" data-toggle="modal" data-target="#myModal" data-seq="${i.getA_no() }" > 
+						 			  				
+						 						   <img class="main-css-thumbnail" alt="loading" src="<%=request.getContextPath()%>/resources/img/${i.getA_img() }" >
+						 						   
+						 						   </button>
+						   								
+													    
+												    
+							     						
+												
+											 
 											</div>
 										</div>
 										<div class="main-css-15v0401">
@@ -163,15 +191,57 @@
 													</span>
 												</div>
 												<span class="main-css-11wj8nz">
-													<input class="main-btn-11wj8nz" type="image" src="./resources/img/add2.png">
+													<!-- <input class="main-btn-11wj8nz" type="image" src="./resources/img/add.png"> -->
+													<input class="main-btn-11wj8nz" type="button" value="담기">
 												</span>
 											</div>
 										</div>
 									</div>
 								</div>
+								<%-- 리스트 end --%>
 								
+								
+						
 								</c:forEach>
 								</c:if>
+								 <!-- Modal -->
+							     <div class="modal" id="myModal" role="dialog" data-seq = "${i.getA_no() }">
+							       <div class="modal-dialog">
+							 		 <c:if test="${i eq no }">
+							 		 <c:forEach var ="i" items = "${list}">
+							 		 
+							 		  <input type="hidden" value="${dto.getA_no() }" name="a_no()">	
+							         <!-- Modal content-->
+							         <div class="modal-content">
+							           <div class="modal-header">
+							             <button type="button" class="close" data-dismiss="modal"></button>
+							             <h4 class="modal-title">${i.getA_name() }</h4>
+							           </div>
+							           <div class="modal-body">
+							             <p><img class="main-css-thumbnail" alt="loading" loading="lazy" src="<%=request.getContextPath()%>/resources/img/${i.getA_img() }" > </p>
+							           </div>
+							           <div class="modal-footer">
+							             <img class="main-css-thumbnail" alt="loading" loading="lazy" src="<%=request.getContextPath()%>/resources/img/${i.getA_img_cont() }" >
+							           </div>
+							         </div>
+							         
+									</c:forEach>
+									</c:if>
+							       </div>
+							     </div>
+							     <!-- Modal end-->
+							     
+							     
+								
+								 <c:if test="${empty list }">
+							         <tr>
+							            <td colspan="5" align="center">
+							               <h3>검색된 제품 목록이 없습니다.....</h3>
+							            </td>
+							         </tr>
+							      </c:if>	
+								
+								
 							</div>
 						</main>
 					

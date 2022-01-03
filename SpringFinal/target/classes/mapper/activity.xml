@@ -13,4 +13,8 @@
 		select * from activity order by a_no desc
 	</select>
 	
+	<select id="content" parameterType="int" resultType="com.spring.model.ActivityDTO">
+		select * from activity where a_no = #{no}
+	</select>
+	
 </mapper>
