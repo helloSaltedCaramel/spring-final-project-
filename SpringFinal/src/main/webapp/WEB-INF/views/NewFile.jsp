@@ -20,7 +20,8 @@
     
   $(button).on('click',function(){
         $('#myModal').modal('show');
-    });
+  
+  });
 </script>
   
 <style type="text/css">
@@ -61,6 +62,13 @@
      align:left;
       
    }
+   
+   .container {
+   
+   margin-left:480px;
+   margin-right:480px;
+   
+   }
 
   .myModal {
   
@@ -77,17 +85,36 @@
   text-align:center;
   
   }
+  
+  h5 {
+        
+    font-size:17px;
+  
+  }
+
+  button {
+   
+     margin:4px;
+   border: 1px solid lightgray;
+   color:gray;
+   font-size:14px;
+   background-color:white;
+    text-align: left;
+     padding: 3px;
+     border-radius: 2em;
+     width: 200px;
+     height:35px;
+     
+     }  
     
 </style>
 </head>
 <body>
 
-<div class="css-1weatn5--Home-style--headerBackground"></div>
-    
-    <jsp:include page="../views/include/place_category.jsp"/>
+               
 
     <!-- 숙소 리스트를 카드형으로 -->
-    <div class = "container" align = "center">
+    <div class = "container" align = "center">   
      <c:forEach var = "rows" items = "${List }">          
        
        <!-- 카드 이미지 -->
@@ -103,13 +130,14 @@
                <h2 align = "left"> ${rows.getP_name() } </h2>
              <p align = "left"> ${rows.getP_grade() }성급  | ${rows.getP_location() } </p>
              <br>          
-              <h1 align = "left"> ${rows.getP_price() }원   <button type = "button" class = "btn btn-light" data-toggle = "modal" data-target = "#myModal" data-seq="${rows.getP_no() }"> 상세 정보 </button></h1>
-               <!-- onclick = "location.href='place_content.do?no=${rows.getP_no() }'" -->
+              <h1 align = "left"> ${rows.getP_price() }원   <button type = "button" class = "btn btn-light" data-toggle = "modal" data-target = "#myModal" onclick = "location.href='place_content.do?p_no=${rows.getP_no() }'"> 상세 정보 </button></h1>
                
               <!-- Modal -->
-              <div class = "modal" id = "myModal" role = "dialog" data-seq = "${rows.getP_no() }">
+              <div class = "modal" id = "myModal" role = "dialog">
                 <div class = "modal-dialog">
-                <c:forEach var = "rows" items = "${List }">
+                <c:set var="dto" value="${Cont }" />
+                <c:if test="${!empty dto }">
+                                  
                   <!-- Modal content-->
                   <div class = "modal-content">
                     
@@ -118,7 +146,7 @@
                     </div>
                     
                     <div class = "modal-body">
-                                                     
+                      <img src = "<%=request.getContextPath() %>/resources/image/${dto.getP_info() }">                               
                     </div>
                     
                     <div class = "modal-footer">
@@ -126,7 +154,12 @@
                     </div>
                   
                   </div>
-                  </c:forEach>                     
+                  </c:if> 
+                  
+                  <c:if test="${empty dto }">
+                  <h3> 검색된 내용 없음 </h3>
+                  </c:if>
+                                     
                 </div>
               </div>
                   <!-- Modal end -->

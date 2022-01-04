@@ -65,17 +65,21 @@ public class ActivityController {
 		
 	}
 	
-	@RequestMapping("activity_cont.do")
-	public String content(@RequestParam("no") int no, Model model) {
-		
-		ActivityDTO dto = this.dao.activityCont(no);
-		
-		model.addAttribute("Cont", dto);
-		
-		// System.out.println("image >>> " + dto.getA_img());
-		
-		return "activity_list";
-	}
+//	@RequestMapping("activity_cont.do")
+//	public String content(@RequestParam("no") int no, Model model) {
+//		
+//		ActivityDTO dto = this.dao.activityCont(no);
+//		
+//		model.addAttribute("Cont", dto);
+//		
+//		// System.out.println("image >>> " + dto.getA_img());
+//		
+//		return "activity_list";
+//	}
 	
-	
+//	@RequestMapping("act_new.do")
+//	public String ActListNewSort(Model model) {
+//
+//	}
 }
+	
