@@ -18,19 +18,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     
+  
+  var a_id ="";
+  
   $(button).on('load',function(){
         $('#myModal').modal('show');
-       
+        $(‘#a_bo’).val(A_no);
     });
   
-$(document).ready(function(){
-	var modal = $('#myModal');
-	$(button).on('click',function(e){
-		var text = e.target.innerText
-		moda.val(text)
-	})
-})
-  
+	
+ 
   
   
   $(button).on('load',function(){
@@ -80,16 +77,10 @@ $(document).ready(function(){
 						         <div class="map-content">
 						           <div class="map-header" >
 						           
-						             <h4 class="map-title">Modal Header</h4>
-						             <img class="main-css-thumbnail" alt="loading"
+						             <img class="ma-css-thumbnail" alt="loading"
 														src="<%=request.getContextPath()%>/resources/img/map_cloudfront.png">
 						           </div>
-						           <div class="modal-body">
-						             <p>Some text in the modal.</p>
-						           </div>
-						           <div class="modal-footer">
-						             
-						           </div>
+						           
 						         </div>
 							</div> 
 						
@@ -218,7 +209,7 @@ $(document).ready(function(){
 
 
 												<%-- <button type="button" id="btn-myModal" class="btn btn-sm" onclick="location.href='activity_cont.do?no=${i.getA_no() }'" data-toggle="modal" data-target="#myModal" >  --%>
-												<button type="button" id="btn-myModal" class="main-css-imgWrapper" data-toggle="modal" data-target="#myModal" data-notifyid="${i.getA_no() }">
+												<button type="button" id="btn-myModal" class="main-css-imgWrapper" data-toggle="modal" data-target="#myModal" data-notifyid="${i.a_no }">
 
 													<img class="main-css-thumbnail" alt="loading"
 														src="<%=request.getContextPath()%>/resources/img/${i.getA_img() }">
@@ -229,7 +220,7 @@ $(document).ready(function(){
 										<div class="main-css-15v0401">
 											<div>
 												<div class="main-css-1v0401">액티비티 제주도</div>
-												<div class="main-css-2v0401">${i.getA_name() }</div>
+												<div class="main-css-2v0401">${i.a_name }</div>
 												<div class="main-css-3v0401">${i.getA_seller()}</div>
 											</div>
 											<div>
@@ -263,8 +254,7 @@ $(document).ready(function(){
 								</c:forEach>
 							</c:if>
 							<!-- Modal -->
-							<div class="modal" id="myModal" role="dialog"
-								data-seq="${i.getA_no() }">
+							<div class="modal" id="myModal" role="dialog" data-seq="${i.a_no }">
 								<div class="modal-dialog">
 									<%-- <c:if test="${dto.getA_no() }"> --%>
 
@@ -272,7 +262,7 @@ $(document).ready(function(){
 									<div class="modal-content">
 										<%--  <c:forEach var="i" items="${list}" varStatus="status">  --%>
 											<%--  <c:set var="dto" value="${Cont }" /> --%>
-											<input type="hidden" value="${i.getA_no() }" id="a_no">
+											<input type="hidden" value="${i.a_no }" id="a_no">
 											<%-- <c:out value="${status}" />  --%>
 
 											<%-- <c:if test="${last}">  --%>
