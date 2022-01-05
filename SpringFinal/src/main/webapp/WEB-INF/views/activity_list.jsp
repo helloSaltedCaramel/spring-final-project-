@@ -97,7 +97,8 @@
 								</li>
 
 								<li>
-									<button class="cat-all-common">
+									<button class="cat-all-common" onclick="location.href='activity_list.do?no=${i.getA_no() }'">
+									
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/diving.png">
 										<div class="cat-label">스노클링/다이빙</div>
@@ -193,7 +194,7 @@
 							<%-- 리스트 전체틀  --%>
 
 							<c:set var="list" value="${List }" />
-							<%-- 	<c:set var="dto" value="${Paging }" />  페이징 --%>
+							<c:set var="dto" value="${Paging }" />  <%-- 페이징 --%>
 
 							<c:if test="${!empty list }">
 								<c:forEach items="${list }" var="i">
@@ -260,10 +261,10 @@
 
 									<!-- Modal content-->
 									<div class="modal-content">
-										<%--  <c:forEach var="i" items="${list}" varStatus="status">  --%>
+										  <c:forEach var="i" items="${list}" varStatus="status">  
 											<%--  <c:set var="dto" value="${Cont }" /> --%>
 											<input type="hidden" value="${i.a_no }" id="a_no">
-											<%-- <c:out value="${status}" />  --%>
+											 <c:out value="${status}" />  -
 
 											<%-- <c:if test="${last}">  --%>
 
@@ -289,7 +290,7 @@
 												</div>
 												<%--  </c:if>   --%>
 											<%-- </c:if> --%>
-										<%-- </c:forEach> --%>
+										 </c:forEach> 
  									</div>
 
 
@@ -312,11 +313,37 @@
 						</div>
 					</main>
 
-					<%--가운데 main end --%>
-					
 					
 				</div>
-			</div>		
+					
+			</div>	
+			<%--가운데 main end --%>	
+			<div align="center"><%-- 페이징처리 부분 --%>
+					
+					
+					   <c:if test="${dto.getPage() > dto.getBlock() }">
+					      <a href="activity_list.do?page=1">◀◀</a>
+					      <a href="activity_list.do?page=${dto.getStartBlock() - 1 }">◀</a>
+					   </c:if>
+					   
+					   <c:forEach begin="${dto.getStartBlock() }"
+					                   end="${dto.getEndBlock() }" var="i">
+					      <c:if test="${i == dto.getPage() }">
+					         <b> <a href="activity_list.do?page=${i }">[${i }]</a></b>
+					      </c:if>
+					      
+					      <c:if test="${i != dto.getPage() }">
+					         <a href="activity_list.do?page=${i }">[${i }]</a>
+					      </c:if>
+					   </c:forEach>
+					   
+					   <c:if test="${dto.getEndBlock() < dto.getAllPage() }">
+					       <a href="activity_list.do?page=${dto.getEndBlock() + 1}">▶</a>
+					      <a href="activity_list.do?page=${dto.getAllPage() }">▶▶</a>
+					   </c:if>
+					   <br> <br>
+				
+			</div>
 		</div>
 	
 	</div>

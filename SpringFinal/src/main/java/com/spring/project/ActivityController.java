@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.model.ActivityDAO;
 import com.spring.model.ActivityDTO;
+import com.spring.model.PageDTO;
 
 
 @Controller
@@ -21,10 +22,10 @@ public class ActivityController {
 	private ActivityDAO dao;
 	
 	
-	private final int rowsize = 12;			// 한 페이지에 보여질 게시물의 수
+	private final int rowsize = 9;			// 한 페이지에 보여질 게시물의 수
 	private int totalRecord = 0;            // DB 상의 게시물 전체 수
 	
-/*	
+	
 	@RequestMapping("activity_list.do")
 	public String list(HttpServletRequest request, Model model) {
 		
@@ -51,19 +52,19 @@ public class ActivityController {
 		
 		
 	}
-	*/
 	
-	@RequestMapping("activity_list.do")
-	public String list(Model model) {
-		
-		List<ActivityDTO> list = this.dao.getActivityList();
-		
-		model.addAttribute("List", list);
-		
-		return "activity_list";
-		
-		
-	}
+	
+//	@RequestMapping("activity_list.do")
+//	public String list(Model model) {
+//		
+//		List<ActivityDTO> list = this.dao.getActivityList();
+//		
+//		model.addAttribute("List", list);
+//		
+//		return "activity_list";
+//		
+//		
+//	}
 	
 //	@RequestMapping("activity_cont.do")
 //	public String content(@RequestParam("no") int no, Model model) {
@@ -77,10 +78,30 @@ public class ActivityController {
 //		return "activity_list";
 //	}
 	
-//	@RequestMapping("act_new.do")
-//	public String ActListNewSort(Model model) {
-//
-//	}
+	@RequestMapping("activity_search.do")
+	public String search(@RequestParam("field") String field,
+			@RequestParam("keyword") String keyword,
+			@RequestParam("page") int nowPage, Model model) {
+		
+		// 검색분류와 검색어에 해당하는 게시글의 수를 DB에서 확인하는 작업
+		totalRecord = this.dao.searchActivityCount(field, keyword);
+		
+		PageDTO dto = 
+				new PageDTO(nowPage, rowsize, totalRecord, field, keyword);
+		
+		System.out.println("검색 게시물 수 >>> " + dto.getTotalRecord());
+		System.out.println("전체 페이지 수 >>> " + dto.getAllPage());
+		
+		// 한 페이지당 보여질 게시물의 수만큼 검색한 게시물을 List로 가져오는 메서드.
+		List<ActivityDTO> searchList = this.dao.searchActivityList(dto);
+		
+		model.addAttribute("searchPageList", searchList);
+		
+		model.addAttribute("paging", dto);
+		
+		return "board_search";
+		
+	}
 
 
 

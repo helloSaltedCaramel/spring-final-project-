@@ -18,8 +18,8 @@ public class ActivityDAOImpl implements ActivityDAO {
 	}
 
 	@Override
-	public List<ActivityDTO> getActivityList() {
-		return this.sqlSession.selectList("all");
+	public List<ActivityDTO> getActivityList(PageDTO dto) {
+		return this.sqlSession.selectList("all",dto);
 	}
 
 	@Override
@@ -66,9 +66,17 @@ public class ActivityDAOImpl implements ActivityDAO {
 
 	@Override
 	public List<ActivityDTO> searchActivityList(PageDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		if(dto.getField().equals("snow")) {
+			return this.sqlSession.selectList("snowList", dto);
+		}else if(dto.getField().equals("cont")) {
+			return this.sqlSession.selectList("contList", dto);
+		}else if(dto.getField().equals("title_cont")) {
+			return this.sqlSession.selectList("titleCont", dto);
+		}else {
+			return this.sqlSession.selectList("writerList", dto);
+		}
 	}
+	
 
 	
 	

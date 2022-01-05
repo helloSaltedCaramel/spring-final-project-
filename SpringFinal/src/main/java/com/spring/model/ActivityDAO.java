@@ -6,7 +6,7 @@ public interface ActivityDAO {
 
 	int getListCont();
 	
-	List<ActivityDTO> getActivityList ();
+	List<ActivityDTO> getActivityList (PageDTO dto);
 	
 	int insertActivity (ActivityDTO dto);
 	
