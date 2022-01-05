@@ -19,7 +19,10 @@ public class ActivityDAOImpl implements ActivityDAO {
 
 	@Override
 	public List<ActivityDTO> getActivityList(PageDTO dto) {
+		
 		return this.sqlSession.selectList("all",dto);
+		
+		
 	}
 
 	@Override
@@ -63,16 +66,40 @@ public class ActivityDAOImpl implements ActivityDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+//
+//	@Override
+//	public List<ActivityDTO> searchActivityList(PageDTO dto) {
+//		if(dto.getField().equals("snow")) {
+//			return this.sqlSession.selectList("snowList", dto);
+//		}else if(dto.getField().equals("cont")) {
+//			return this.sqlSession.selectList("contList", dto);
+//		}else if(dto.getField().equals("title_cont")) {
+//			return this.sqlSession.selectList("titleCont", dto);
+//		}else {
+//			return this.sqlSession.selectList("writerList", dto);
+//		}
+//	}
+
+	@Override
+	public int getCategoryCont(String result) {
+		return this.sqlSession.selectOne("category", result);
+	}
 
 	@Override
 	public List<ActivityDTO> searchActivityList(PageDTO dto) {
-		if(dto.getField().equals("snow")) {
-			return this.sqlSession.selectList("snowList", dto);
-		}else if(dto.getField().equals("cont")) {
-			return this.sqlSession.selectList("contList", dto);
-		}else if(dto.getField().equals("title_cont")) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ActivityDTO> getCategorylist(PageDTO dto) {
+		if(dto.getCategory().equals("아웃도어")) {
+			return this.sqlSession.selectList("outdoor", dto);
+		}else if(dto.getCategory().equals("스노우클링/다이빙")) {
+			return this.sqlSession.selectList("snow", dto);
+		}else if(dto.getCategory().equals("title_cont")) {
 			return this.sqlSession.selectList("titleCont", dto);
-		}else {
+	    }else {
 			return this.sqlSession.selectList("writerList", dto);
 		}
 	}
@@ -81,4 +108,5 @@ public class ActivityDAOImpl implements ActivityDAO {
 	
 	
 
-}
+	}
+

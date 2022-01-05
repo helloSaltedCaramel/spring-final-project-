@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<%-- import activity_list.css --%>
 <link href="${path}/resources/css/activity_list.css" rel="stylesheet"/> 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -79,6 +80,8 @@
 						           
 						             <img class="ma-css-thumbnail" alt="loading"
 														src="<%=request.getContextPath()%>/resources/img/map_cloudfront.png">
+						           	
+						           
 						           </div>
 						           
 						         </div>
@@ -89,7 +92,7 @@
 							<h3 class="cat-title">카테고리</h3>
 							<ul class="cat-catwapper">
 								<li>
-									<button class="cat-all-common">
+									<button class="cat-all-common" onclick="location.href='activity_list.do'">
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/total.png">
 										<div class="cat-label">전체보기</div>
@@ -97,11 +100,12 @@
 								</li>
 
 								<li>
-									<button class="cat-all-common" onclick="location.href='activity_list.do?no=${i.getA_no() }'">
+								    <c:set var="str" value="스노우클링/다이빙" />
+									<button class="cat-all-common" onclick="location.href='activity_category.do?result=${str }'">
 									
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/diving.png">
-										<div class="cat-label">스노클링/다이빙</div>
+										<div class="cat-label">스노우클링/다이빙</div>
 									</button>
 								</li>
 
@@ -154,7 +158,8 @@
 								</li>
 
 								<li>
-									<button class="cat-all-common">
+								<c:set var="str" value="아웃도어" />
+									<button class="cat-all-common" onclick="location.href='activity_category.do?result=${str }'">
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/kart_racing.png">
 										<div class="cat-label">아웃도어</div>
