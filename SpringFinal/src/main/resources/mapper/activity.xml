@@ -54,4 +54,15 @@
 		]]>
 	</select>
 	
+	
+	<select id="surfing" parameterType="com.spring.model.PageDTO" resultType="com.spring.model.ActivityDTO">
+		<![CDATA[
+			select * from
+				(select b.*, row_number() 
+			   		over(order by a_no desc) rnum from activity b
+			   		where a_category like '%' || #{category}  || '%' )	
+			   		where rnum >= #{startNo} and rnum <= #{endNo}
+		]]>
+	</select>
+	
 </mapper>

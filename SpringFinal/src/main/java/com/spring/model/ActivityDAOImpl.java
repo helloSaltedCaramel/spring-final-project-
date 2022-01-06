@@ -93,12 +93,12 @@ public class ActivityDAOImpl implements ActivityDAO {
 
 	@Override
 	public List<ActivityDTO> getCategorylist(PageDTO dto) {
-		if(dto.getCategory().equals("아웃도어")) {
+		if(dto.getCategory().equals("아웃도어")) {                   //아웃도어와 같은 이름을 가져옴
 			return this.sqlSession.selectList("outdoor", dto);
 		}else if(dto.getCategory().equals("스노우클링/다이빙")) {
 			return this.sqlSession.selectList("snow", dto);
-		}else if(dto.getCategory().equals("title_cont")) {
-			return this.sqlSession.selectList("titleCont", dto);
+		}else if(dto.getCategory().equals("서핑")) {
+			return this.sqlSession.selectList("surfing", dto);
 	    }else {
 			return this.sqlSession.selectList("writerList", dto);
 		}

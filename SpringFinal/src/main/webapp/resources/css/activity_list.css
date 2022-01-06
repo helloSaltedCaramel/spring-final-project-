@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+#Main {
+	background-color: #fff;
+}
 
 .Mainmod {
 	
@@ -276,30 +279,55 @@
 }/* 담기 버튼 */
 
 .main-btn-11wj8nz {
-	font-size:14px;
-	display:flex;
-	background-color: #fff;
-	width: 40px;
-	height: 30px;
+	height: 30px; 
+      width: 50px; 
+      border-radius: 10px; 
+      border: 0px; 
+      background-color: rgb(87, 121, 244); 
+      font-family: Ubuntu, sans-serif; 
+      color: rgb(255, 255, 255); 
+      font-size: 14px; 
+      font-weight: 1000; 
+      letter-spacing: 2px;
 }/* 담기 버튼 */
 
 .main-btn-11wj8nz:hover {
-	background-color: #5779F4;
-	color:#fff;
+	height: 30px; 
+      width: 50px; 
+      border-radius: 10px; 
+     
+      background-color: #fff; 
+      font-family: Ubuntu, sans-serif; 
+      color: rgb(87, 121, 244); 
+      font-size: 14px; 
+      font-weight: 1000; 
+      letter-spacing: 2px;
 }/* 담기 버튼 */
 
 .main-btn-12wj8nz {
-	display:flex;
-	margin-left: auto;
-	font-size:14px;
-	background-color: #fff;
-	width: 100px;
-	height: 30px;
+	height: 30px; 
+      width: 50px; 
+      border-radius: 10px; 
+      border: 0px; 
+      background-color: rgb(87, 121, 244); 
+      font-family: Ubuntu, sans-serif; 
+      color: rgb(255, 255, 255); 
+      font-size: 14px; 
+      font-weight: 1000; 
+      letter-spacing: 2px;
 }/* 담기 버튼 */
 
 .main-btn-12wj8nz:hover {
-	background-color: #5779F4;
-	color:#fff;
+	height: 30px; 
+      width: 50px; 
+      border-radius: 10px; 
+      
+      background-color: #fff; 
+      font-family: Ubuntu, sans-serif; 
+      color: rgb(87, 121, 244); 
+      font-size: 14px; 
+      font-weight: 1000; 
+      letter-spacing: 2px;
 }/* 담기 버튼 */
 
 /* 리스트사진 밑 글 end */
