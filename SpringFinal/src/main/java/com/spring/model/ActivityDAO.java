@@ -6,7 +6,11 @@ public interface ActivityDAO {
 
 	int getListCont();
 	
-	List<ActivityDTO> getActivityList ();
+	List<ActivityDTO> getActivityList (PageDTO dto);
+	
+	int getCategoryCont (String result);  // 카테고리에 해당하는 레코드  수 확인
+	
+	List<ActivityDTO> getCategorylist(PageDTO dto);
 	
 	int insertActivity (ActivityDTO dto);
 	

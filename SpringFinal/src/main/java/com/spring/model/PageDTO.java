@@ -18,8 +18,9 @@ public class PageDTO {
 	private int block = 3;           // 아래에 보여질 페이지 최대 수
 	
 	// 검색 관련 멤버 선언
-	private String field;
-	private String keyword;
+//	private String field;
+//	private String keyword;
+	private String category;
 	
 	public PageDTO() {  }   // 기본 생성자
 	
@@ -51,11 +52,9 @@ public class PageDTO {
 	}   // 인자 생성자
 	
 	
-	public PageDTO(int page, int rowsize, int totalRecord,
-			String field, String keyword) {
+	public PageDTO(int page, int rowsize, int totalRecord, String category) {
 		this(page, rowsize, totalRecord);
-		this.field = field;
-		this.keyword = keyword;
+		this.category = category;
 	}   // 인자 생성자
 	
 }

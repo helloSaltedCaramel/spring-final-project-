@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri= "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -10,32 +12,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<%-- import activity_list.css --%>
 <link href="${path}/resources/css/activity_list.css" rel="stylesheet"/> 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
     
+  
+
+  
   $(button).on('load',function(){
-        $('#myModal').modal('show');
+        $('#Map').modal ('show');
        
     });
-  
-$(document).ready(function(){
-	var modal = $('#myModal');
-	$(button).on('click',function(e){
-		var text = e.target.innerText
-		moda.val(text)
-	})
-})
-  
-  
-  
-  $(button).on('load',function(){
-      $('#Map').modal('show');
-  });
+ 
+ 
   
   function sort(how) {
 	  $('main-mainHeader form').attr('action','act_new.do?sort='+how);
@@ -51,7 +44,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-      
+      <header>
+		<jsp:include page="header.jsp" />
+	</header>
 
 	<div id="Main" >	
 		<div class="Mainmod">
@@ -70,35 +65,38 @@ $(document).ready(function(){
 								</div>
 
 						</button>
-
-						<!--Modal -->
-							 <div class="modal" id="Map" role="dialog">
-							
-							
-														
+						
+						
+												     <!-- Modal -->
+						     <div class="modal" id="Map" role="dialog">
+						       <div class="modal-dialog">
+						   
 						         <!-- Modal content-->
-						         <div class="map-content">
-						           <div class="map-header" >
-						           
-						             <h4 class="map-title">Modal Header</h4>
-						             <img class="main-css-thumbnail" alt="loading"
-														src="<%=request.getContextPath()%>/resources/img/map_cloudfront.png">
+						         <div class="modal-content">
+						           <div class="modal-header">
+						             <button type="button" class="close" data-dismiss="modal"></button>
+						              <img class="ma-css-thumbnail" alt="loading" src="<%=request.getContextPath()%>/resources/img/map_cloudfront.png">
 						           </div>
 						           <div class="modal-body">
 						             <p>Some text in the modal.</p>
 						           </div>
 						           <div class="modal-footer">
-						             
+						             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						           </div>
 						         </div>
-							</div> 
 						
+						       </div>
+						     </div>
+						      
+						  
+						
+
 
 							<%--전체 카테고리st --%>
 							<h3 class="cat-title">카테고리</h3>
 							<ul class="cat-catwapper">
 								<li>
-									<button class="cat-all-common">
+									<button class="cat-all-common" onclick="location.href='activity_list.do'">
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/total.png">
 										<div class="cat-label">전체보기</div>
@@ -106,15 +104,18 @@ $(document).ready(function(){
 								</li>
 
 								<li>
-									<button class="cat-all-common">
+								    <c:set var="str" value="스노우클링/다이빙" />
+									<button class="cat-all-common" onclick="location.href='activity_category.do?result=${str }'">
+									
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/diving.png">
-										<div class="cat-label">스노클링/다이빙</div>
+										<div class="cat-label">스노우클링/다이빙</div>
 									</button>
 								</li>
 
 								<li>
-									<button class="cat-all-common">
+								<c:set var="str" value="서핑" />
+									<button class="cat-all-common" onclick="location.href='activity_category.do?result=${str }'">
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/surfing.png">
 										<div class="cat-label">서핑</div>
@@ -162,7 +163,8 @@ $(document).ready(function(){
 								</li>
 
 								<li>
-									<button class="cat-all-common">
+								<c:set var="str" value="아웃도어" />
+									<button class="cat-all-common" onclick="location.href='activity_category.do?result=${str }'">
 										<img class="cat-icon" alt="all icon"
 											src="./resources/img/kart_racing.png">
 										<div class="cat-label">아웃도어</div>
@@ -202,7 +204,7 @@ $(document).ready(function(){
 							<%-- 리스트 전체틀  --%>
 
 							<c:set var="list" value="${List }" />
-							<%-- 	<c:set var="dto" value="${Paging }" />  페이징 --%>
+							<c:set var="dto" value="${Paging }" />  <%-- 페이징 --%>
 
 							<c:if test="${!empty list }">
 								<c:forEach items="${list }" var="i">
@@ -216,9 +218,9 @@ $(document).ready(function(){
 											<div class="main-css-imgWrapper">
 												<%--  <c:set var="dto" value="${Cont }" /> --%>
 
-
+ 						<%--모달 버튼 --%>
 												<%-- <button type="button" id="btn-myModal" class="btn btn-sm" onclick="location.href='activity_cont.do?no=${i.getA_no() }'" data-toggle="modal" data-target="#myModal" >  --%>
-												<button type="button" id="btn-myModal" class="main-css-imgWrapper" data-toggle="modal" data-target="#myModal" data-notifyid="${i.getA_no() }">
+												<button type="button" id="btn-myModal" class="main-css-imgWrapper" data-toggle="modal" data-target="${i.getA_no() }" data-notifyid="${i.getA_no() }">
 
 													<img class="main-css-thumbnail" alt="loading"
 														src="<%=request.getContextPath()%>/resources/img/${i.getA_img() }">
@@ -229,7 +231,7 @@ $(document).ready(function(){
 										<div class="main-css-15v0401">
 											<div>
 												<div class="main-css-1v0401">액티비티 제주도</div>
-												<div class="main-css-2v0401">${i.getA_name() }</div>
+												<div class="main-css-2v0401">${i.a_name }</div>
 												<div class="main-css-3v0401">${i.getA_seller()}</div>
 											</div>
 											<div>
@@ -260,77 +262,84 @@ $(document).ready(function(){
 
 
 
-								</c:forEach>
-							</c:if>
-							<!-- Modal -->
-							<div class="modal" id="myModal" role="dialog"
-								data-seq="${i.getA_no() }">
-								<div class="modal-dialog">
-									<%-- <c:if test="${dto.getA_no() }"> --%>
+						</c:forEach>
+					</c:if>
+					<!-- Modal -->
+					<c:forEach var="i" items="${list}" varStatus="status">
+					<div class="modal fade modal-dialog-centered modal-dialog-scrollable" id="${fn:split(i.getA_no(), '#')[0] }" role="dialog" data-seq="${i.a_no }">
+						<div class="modal-dialog">
+							<%-- <c:if test="${dto.getA_no() }"> --%>
 
-									<!-- Modal content-->
-									<div class="modal-content">
-										<%--  <c:forEach var="i" items="${list}" varStatus="status">  --%>
-											<%--  <c:set var="dto" value="${Cont }" /> --%>
-											<input type="hidden" value="${i.getA_no() }" id="a_no">
-											<%-- <c:out value="${status}" />  --%>
-
-											<%-- <c:if test="${last}">  --%>
-
-
-												<%--  <c:out value="${status}" />  --%>
-												<%-- <c:if test="0"> --%>
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal"></button>
-													<h4 class="modal-title">${i.getA_name() }</h4>
-												</div>
-												<div class="modal-body">
-													<p>
-													
-														<img class="main-css-thumbnail" alt="loading" src="${pageContext.request.contextPath}/resources/img/${i.getA_img() }">
-													</p>
-													<img class="main-css-thumbnail" alt="loading"
-														loading="lazy"
-														src="<%=request.getContextPath()%>/resources/img/${i.getA_img_cont() }">
-
-												</div>
-												<div class="modal-footer">
-													<button class="main-btn-12wj8nz">내일정에 담기</button>
-												</div>
-												<%--  </c:if>   --%>
-											<%-- </c:if> --%>
-										<%-- </c:forEach> --%>
- 									</div>
-
-
-									<%-- </c:if> --%>
+							<!-- Modal content-->
+							<div class="modal-content">
+								<input type="hidden" value="${i.a_no }" id="a_no">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"></button>
+										<h4 class="modal-title">${i.getA_name() }</h4>
+									</div>
+									<div class="modal-body">
+										<p>
+											<img class="main-css-thumbnail" alt="loading" loading="lazy"src="${pageContext.request.contextPath}/resources/img/${i.getA_img() }">
+										</p>
+										<p>
+											<img class="main-css-content" alt="loading" loading="lazy" src="${pageContext.request.contextPath}/resources/img/${i.getA_img_cont() }">
+										</p>
+										</div>
+										<div class="modal-footer">
+											<button class="main-btn-12wj8nz">내일정에 담기</button>
+											</div>
+	 									</div>
+									</div>
 								</div>
-							</div>
-							<!-- Modal end-->
-
-
-
-							<c:if test="${empty list }">
-								<tr>
-									<td colspan="5" align="center">
-										<h3>검색된 제품 목록이 없습니다.....</h3>
-									</td>
-								</tr>
-							</c:if>
-
-
+								<!-- Modal end-->
+							</c:forEach> 
+	
+	
+								<c:if test="${empty list }">
+									<tr>
+										<td colspan="5" align="center">
+											<h3>검색된 제품 목록이 없습니다.....</h3>
+										</td>
+									</tr>
+								</c:if>
 						</div>
-					</main>
-
-					<%--가운데 main end --%>
-					
-					
+					</main>	
 				</div>
-			</div>		
+					
+			</div>	
+			<%--가운데 main end --%>	
+			<div align="center"><%-- 페이징처리 부분 --%>
+					
+					
+					   <c:if test="${dto.getPage() > dto.getBlock() }">
+					      <a href="activity_list.do?page=1">◀◀</a>
+					      <a href="activity_list.do?page=${dto.getStartBlock() - 1 }">◀</a>
+					   </c:if>
+					   
+					   <c:forEach begin="${dto.getStartBlock() }"
+					                   end="${dto.getEndBlock() }" var="i">
+					      <c:if test="${i == dto.getPage() }">
+					         <b> <a href="activity_list.do?page=${i }">[${i }]</a></b>
+					      </c:if>
+					      
+					      <c:if test="${i != dto.getPage() }">
+					         <a href="activity_list.do?page=${i }">[${i }]</a>
+					      </c:if>
+					   </c:forEach>
+					   
+					   <c:if test="${dto.getEndBlock() < dto.getAllPage() }">
+					       <a href="activity_list.do?page=${dto.getEndBlock() + 1}">▶</a>
+					      <a href="activity_list.do?page=${dto.getAllPage() }">▶▶</a>
+					   </c:if>
+					   <br> <br>
+				
+			</div>
 		</div>
 	
 	</div>
-
+	<footer>
+			<jsp:include page="footer.jsp" />
+	</footer>
 
 </body>
 </html>
